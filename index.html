@@ -7,7 +7,6 @@
     
     <title>Avyukta Intelli-SaaS | AI-Driven Global VoIP & Dialer Solutions</title>
     <meta name="description" content="Leading VoIP vendor and dialer provider. Offering International VoIP, Tata/Airtel/Jio SIP, and Predictive Dialers.">
-    <meta name="keywords" content="Dialer, auto dialer, VoIP, international calling, us VoIP, UK VoIP, australia voip, VoIP vendor, VoIP provider, sip provider, tata sip, airtel sip, jio sip, sales crm, omni channel dialer, Predictive Dialer, GSM Gateway">
     
     <!-- FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -63,29 +62,37 @@
         .text-outline { -webkit-text-stroke: 1px var(--border); color: transparent; transition: 0.6s; }
         .text-outline:hover { -webkit-text-stroke: 1px var(--brand-blue); color: var(--text); filter: drop-shadow(0 0 15px var(--brand-blue)); }
 
-        /* MARQUEE WITH TANGERINE FONT */
-        .marquee-container { background: var(--bg); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); padding: 1rem 0; z-index: 100; opacity: 0.95; }
+        .marquee-container { background: var(--bg); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); padding: 1rem 0; z-index: 100; opacity: 0.95; overflow: hidden; display: flex; width: 100%; }
         .marquee-content { 
-            display: inline-block; 
-            animation: marquee 50s linear infinite; 
+            display: flex; 
+            animation: marquee 40s linear infinite; 
             white-space: nowrap; 
             font-family: 'Tangerine', cursive; 
             font-weight: 700;
+            width: fit-content;
         }
-        .marquee-content a { font-size: 2.2rem; margin: 0 3rem; }
+        .marquee-content a { font-size: 2.2rem; padding: 0 4rem; text-decoration: none; color: var(--text); }
+        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
-        .product-card { position: relative; transition: 0.6s cubic-bezier(0.165, 0.84, 0.44, 1); background: var(--surface); border: 1px solid var(--border); overflow: hidden; }
+        .product-card { position: relative; transition: 0.6s cubic-bezier(0.165, 0.84, 0.44, 1); background: var(--surface); border: 1px solid var(--border); overflow: hidden; border-radius: 1.5rem; }
         .product-card::after { content: ""; position: absolute; top: 0; left: -150%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent); transform: skewX(-20deg); transition: 0.8s; }
         .product-card:hover::after { left: 150%; }
         .product-card:hover { border-color: var(--brand-blue); transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
 
-        /* FLOATING ACTION CLUSTER */
         .float-cluster { position: fixed; right: 24px; bottom: 80px; z-index: 1000; display: flex; flex-direction: column; gap: 14px; }
-        .float-btn { width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: 0.3s; box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
+        .float-btn { width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: 0.3s; box-shadow: 0 10px 20px rgba(0,0,0,0.3); position: relative; }
         .float-btn svg { width: 18px; height: 18px; }
         
         .pulse-effect::before { content: ""; position: absolute; inset: -4px; border-radius: 50%; background: inherit; opacity: 0.4; z-index: -1; animation: sonarPulse 2s infinite; }
         @keyframes sonarPulse { 0% { transform: scale(1); opacity: 0.4; } 100% { transform: scale(2); opacity: 0; } }
+
+        .float-tooltip {
+            position: absolute; right: 45px; background: var(--surface); color: var(--text);
+            padding: 4px 10px; border-radius: 6px; font-size: 10px; font-weight: 700;
+            white-space: nowrap; opacity: 0; pointer-events: none; transition: 0.3s;
+            border: 1px solid var(--border);
+        }
+        .float-btn:hover .float-tooltip { opacity: 1; transform: translateX(-5px); }
 
         .reveal { opacity: 0; transform: translateY(20px); transition: 0.8s ease-out; }
         .reveal.active { opacity: 1; transform: translateY(0); }
@@ -93,16 +100,10 @@
         .footer-link { color: var(--text); opacity: 0.6; transition: 0.3s; font-size: 13px; text-decoration: none; }
         .footer-link:hover { opacity: 1; color: var(--brand-blue); transform: translateX(4px); display: inline-block; }
 
-        .image-box { border: 1px solid var(--border); border-radius: 1.5rem; background: rgba(0,0,0,0.05); overflow: hidden; transition: 0.4s; }
-        .image-box:hover { border-color: var(--brand-blue); }
-
-        .career-step { display: none; animation: fadeIn 0.4s ease; }
-        .career-step.active { display: block; }
-        .form-input { width: 100%; background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 8px; padding: 12px; color: var(--text); outline: none; }
-        .progress-fill { height: 100%; background: linear-gradient(90deg, var(--brand-blue), var(--brand-purple)); transition: width 0.5s ease; }
-
         .partner-logo { max-height: 45px; width: auto; filter: grayscale(1) brightness(0.8); transition: 0.4s ease; cursor: pointer; }
         .partner-logo:hover { filter: grayscale(0) brightness(1.2); transform: scale(1.1); }
+
+        .urm-highlight { font-family: 'Bebas Neue', sans-serif; color: var(--brand-blue); border-bottom: 2px solid var(--brand-blue); padding: 0 4px; font-size: 1.65em; vertical-align: middle; }
     </style>
 </head>
 <body>
@@ -118,14 +119,17 @@
 
     <div class="ai-bg" id="bg-mesh"></div>
 
-    <!-- FLOATING CLUSTER -->
+    <!-- FLOATING CLUSTER (RHS) -->
     <div class="float-cluster">
-        <!-- THEME TOGGLER MOVED HERE -->
         <button onclick="toggleTheme()" class="float-btn bg-slate-800 text-white hover:rotate-90 transition-transform" title="Toggle Theme">
             <svg fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464l-.707-.707a1 1 0 00-1.414 1.414l.707.707a1 1 0 001.414-1.414zm2.12 10.607a1 1 0 010-1.414l.706-.707a1 1 0 111.414 1.414l-.707.707a1 1 0 01-1.414 0zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"/></svg>
         </button>
         <a href="https://avyukta.in/portal" class="float-btn bg-indigo-600 text-white pulse-effect" title="AI Assist">
             <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.54.36 2.98.97 4.29L1 23l6.71-1.97C9.02 21.64 10.46 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18c-1.47 0-2.84-.39-4.03-1.06l-.29-.16-4.03 1.18 1.21-3.9-.18-.32C4.05 14.51 3.5 13.16 3.5 12c0-4.69 3.81-8.5 8.5-8.5s8.5 3.81 8.5 8.5-3.81 8.5-8.5 8.5zm3.5-11c-.83 0-1.5.67-1.5 1.5S14.67 12 15.5 12 17 11.33 17 10.5 16.33 9 15.5 9zm-7 0c-.83 0-1.5.67-1.5 1.5S7.67 12 8.5 12 10 11.33 10 10.5 9.33 9 8.5 9z"/></svg>
+        </a>
+        <a href="https://avyukta.in/matrix" class="float-btn bg-blue-500 text-white" title="Customer Support">
+            <div class="float-tooltip">For Existing Prospects/Clients</div>
+            <svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/></svg>
         </a>
         <a href="https://wa.me/918560000600" target="_blank" class="float-btn bg-[#25D366] text-white" title="WhatsApp Support">
             <svg fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.067 2.877 1.215 3.076.149.198 2.095 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.937 3.659 1.432 5.631 1.432h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
@@ -137,7 +141,7 @@
         <div class="marquee-content" id="nav-links"></div>
     </nav>
 
-    <!-- HEADING SECTION -->
+    <!-- HEADING -->
     <section class="container mx-auto px-6 py-20 md:py-32 text-center reveal">
         <h2 class="ooo-heading leading-none mb-6">
             Welcome to the <span class="gradient-text">3 O’s</span>:<br>
@@ -146,15 +150,18 @@
             <span class="text-outline">Optimized</span>.
         </h2>
         <div class="mt-8">
-            <p class="text-xs font-bold uppercase tracking-[0.5em] text-blue-500">Domain Authority: avyukta.ooo</p>
+            <p class="text-xs font-bold uppercase tracking-[0.3em] text-blue-500">16+ Yrs. of Trust, 4000 + Installations , 11 Countries and Counting</p>
         </div>
     </section>
 
-    <!-- THE HELICOPTER VIEW -->
+    <!-- THE HELICOPTER VIEW (4x4) -->
     <section id="services" class="container mx-auto px-6 pb-24 reveal">
         <div class="text-center mb-16">
-            <h2 class="text-5xl font-bold mb-4 italic">The Helicopter View</h2>
-            <p class="text-slate-500 font-bold uppercase tracking-[0.2em] text-sm">Avyukta Products & Services</p>
+            <h2 class="text-5xl font-bold mb-4 italic uppercase tracking-tighter">The Helicopter View</h2>
+            <div class="text-slate-500 font-medium uppercase tracking-[0.1em] text-sm text-center leading-loose">
+                A2Z of Telco and CRM<sub><span class="urm-highlight">URM</span></sub> <br>
+                <span class="text-[10px] tracking-[0.4em] opacity-80">Universal Relationship Management</span>
+            </div>
         </div>
         <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6" id="product-grid"></div>
     </section>
@@ -162,42 +169,42 @@
     <!-- STRATEGIC ADVANTAGE -->
     <section id="advantage" class="container mx-auto px-6 py-24 reveal border-t border-slate-800/30">
         <div class="grid lg:grid-cols-2 items-center gap-16">
-            <div class="image-box">
-                <img src="SinglePointFlyer.jpg" class="w-full h-auto" alt="Strategic Solution Flyer">
+            <div class="rounded-3xl border border-white/5 overflow-hidden bg-black/40 p-2 group shadow-2xl">
+                <img src="Avyukta%20CRM%20Software.png" 
+                     onerror="this.src='https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800'"
+                     class="w-full h-auto rounded-2xl group-hover:scale-105 transition-transform duration-1000" alt="CRM Logic">
             </div>
             <div class="space-y-8">
                 <h2 class="text-5xl font-bold italic leading-tight uppercase">Single-Point <span class="gradient-text">Authority</span></h2>
                 <div class="space-y-4">
-                    <p class="text-slate-400 leading-relaxed">We consolidate the fragmented telecom landscape. From <strong>International</strong> VoIP minutes to high-end <strong>Predictive Dialers</strong>, Avyukta delivers the core infrastructure for global call centers.</p>
-                    <div class="p-6 bg-blue-500/5 border-l-4 border-blue-500 rounded-r-xl">
-                        <p class="text-sm font-medium italic text-blue-400">"Deploying Intelligent AI Caller agents that automate outbound and inbound calling across 15+ nations."</p>
-                    </div>
+                    <p class="text-slate-400 leading-relaxed italic">"If you are struggling with Spam Marking, DID Connectivity, or Latency — Connect with our Core Engineering team today."</p>
+                    <p class="text-slate-300">We consolidate the fragmented telecom landscape. From International VoIP minutes to high-end Predictive Dialers, Avyukta delivers the core infrastructure for global call centers.</p>
                 </div>
-                <a href="https://avyukta.in/portal" class="inline-block px-10 py-5 bg-blue-600 text-white font-bold rounded-2xl shadow-xl hover:bg-blue-500 transition-all uppercase tracking-widest text-xs">Consult Solutions Architecture</a>
+                <a href="https://avyukta.in/portal" class="inline-block px-10 py-5 bg-blue-600 text-white font-bold rounded-2xl shadow-xl hover:bg-blue-500 transition-all uppercase tracking-widest text-xs">Self Help Price Portal &nearr;</a>
             </div>
         </div>
     </section>
 
-    <!-- NETWORK ARCHITECTURES -->
+    <!-- ARCHITECTURES -->
     <section id="architectures" class="container mx-auto px-6 py-24 border-t border-slate-800/30 reveal">
         <div class="text-center mb-16">
             <h2 class="text-4xl font-bold mb-4 italic uppercase">Network Architectures</h2>
-            <p class="text-slate-500 uppercase tracking-widest text-xs">Carrier-Grade Deployment Engineering</p>
+            <p class="text-slate-500 uppercase tracking-widest text-xs font-bold">Industry-Standard Performance Nodes</p>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="product-card rounded-3xl p-6 text-center">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+            <div class="product-card p-6">
                 <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=800" class="rounded-2xl h-48 w-full object-cover mb-6 grayscale hover:grayscale-0 transition-all" alt="Domestic">
-                <h3 class="text-lg font-bold mb-2">Domestic Architecture</h3>
-                <p class="text-slate-500 text-xs italic">TRAI/DOT compliant PRI and Local Gateway Logic.</p>
+                <h3 class="text-lg font-bold mb-2 uppercase">Domestic Architecture</h3>
+                <p class="text-slate-500 text-xs italic">PRI and Local Gateway Logic for Indian Centers.</p>
             </div>
-            <div class="product-card rounded-3xl p-6 text-center">
+            <div class="product-card p-6">
                 <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800" class="rounded-2xl h-48 w-full object-cover mb-6 grayscale hover:grayscale-0 transition-all" alt="International">
-                <h3 class="text-lg font-bold mb-2">International Mesh</h3>
-                <p class="text-slate-500 text-xs italic">Cloud SIP Clusters across US, UK, and Australia.</p>
+                <h3 class="text-lg font-bold mb-2 uppercase">International Mesh</h3>
+                <p class="text-slate-500 text-xs italic">Multi-region SIP Clusters across US, UK, and Australia.</p>
             </div>
-            <div class="product-card rounded-3xl p-6 text-center">
+            <div class="product-card p-6">
                 <img src="https://images.unsplash.com/photo-1516383274235-5f42d6c6426d?w=800" class="rounded-2xl h-48 w-full object-cover mb-6 grayscale hover:grayscale-0 transition-all" alt="GSM">
-                <h3 class="text-lg font-bold mb-2">GSM Port Mapping</h3>
+                <h3 class="text-lg font-bold mb-2 uppercase">GSM Port Mapping</h3>
                 <p class="text-slate-500 text-xs italic">Hardware-level Multi-Port Intelligent Gateway Logic.</p>
             </div>
         </div>
@@ -206,18 +213,18 @@
     <!-- TRUST SECTION -->
     <section id="trust" class="container mx-auto px-6 py-24 reveal border-t border-slate-800/30">
         <div class="text-center mb-16">
-            <h2 class="text-3xl font-bold mb-12 uppercase tracking-[0.4em] text-blue-400">Global Trust & Connectivity</h2>
+            <h2 class="text-3xl font-bold mb-12 uppercase tracking-[0.4em] text-blue-400">Global Trust & Ecosystem</h2>
             <div class="flex flex-wrap gap-12 items-center justify-center mb-24 grayscale opacity-60 contrast-125">
-                <img src="Zoho.png" class="partner-logo" alt="Zoho">
-                <img src="genesys.png" class="partner-logo" alt="Genesys">
-                <img src="Bitrix24.png" class="partner-logo" alt="Bitrix24">
-                <img src="Avaya.png" class="partner-logo" alt="Avaya">
+                <img src="Zoho.png" onerror="this.style.display='none'" class="partner-logo" alt="Zoho">
+                <img src="genesys.png" onerror="this.style.display='none'" class="partner-logo" alt="Genesys">
+                <img src="Bitrix24.png" onerror="this.style.display='none'" class="partner-logo" alt="Bitrix24">
+                <img src="Avaya.png" onerror="this.style.display='none'" class="partner-logo" alt="Avaya">
             </div>
             
-            <div class="image-box p-4 mb-8"><img src="Partners.jpg" class="w-full h-auto rounded-xl" alt="Partners"></div>
+            <div class="rounded-3xl border border-white/5 p-4 mb-8 bg-black/10"><img src="Partners.jpg" onerror="this.src='https://images.unsplash.com/photo-1551434678-e076c223a692?w=1200'" class="w-full h-auto rounded-xl opacity-90" alt="Partners"></div>
             <div class="grid lg:grid-cols-2 gap-8">
-                <div class="image-box p-4"><img src="Clients.jpg" class="w-full h-auto rounded-xl" alt="Clients"></div>
-                <div class="image-box p-4"><img src="Convergence.jpg" class="w-full h-auto rounded-xl object-cover aspect-video" alt="Convergence"></div>
+                <div class="rounded-3xl border border-white/5 p-4 bg-black/10"><img src="Clients.jpg" onerror="this.src='https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800'" class="w-full h-auto rounded-xl opacity-90" alt="Clients"></div>
+                <div class="rounded-3xl border border-white/5 p-4 bg-black/10"><img src="Convergence.jpg" onerror="this.src='https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800'" class="w-full h-auto rounded-xl opacity-90 object-cover aspect-video" alt="Convergence"></div>
             </div>
         </div>
     </section>
@@ -228,14 +235,14 @@
             <div class="grid lg:grid-cols-2">
                 <div class="p-8 md:p-16">
                     <h2 class="text-4xl font-bold mb-4 italic uppercase">We are <span class="gradient-text">Hiring</span>.</h2>
-                    <p class="text-slate-400 text-sm mb-10 leading-relaxed italic">Join Avyukta Intelligence Core to build the future of voice.</p>
+                    <p class="text-slate-400 text-sm mb-10 leading-relaxed italic">Join the Avyukta Intelligence Core to build the future of voice.</p>
                     <div class="flex flex-col gap-4">
-                        <button onclick="toggleCareer('apply')" class="px-10 py-4 bg-blue-600 text-white rounded-2xl font-bold shadow-lg hover:bg-blue-500 transition-all uppercase tracking-widest text-[10px]">Apply (Portal Onboarding)</button>
+                        <button onclick="toggleCareer('apply')" class="px-10 py-4 bg-blue-600 text-white rounded-2xl font-bold shadow-lg hover:bg-blue-500 transition-all uppercase tracking-widest text-[10px]">Apply Now (Portal Onboarding)</button>
                         <a href="https://www.dialerindia.com/career" target="_blank" class="px-10 py-4 bg-white/5 border border-white/10 rounded-2xl font-bold text-slate-300 hover:bg-white/10 transition-all text-center uppercase tracking-widest text-[10px]">Open Vacancies &nearr;</a>
                     </div>
                 </div>
                 <div class="relative hidden lg:block overflow-hidden h-full">
-                    <img src="We are Hiring.png" class="absolute inset-0 w-full h-full object-cover opacity-80" alt="Hiring">
+                    <img src="We%20are%20Hiring.png" onerror="this.src='https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800'" class="absolute inset-0 w-full h-full object-cover opacity-90" alt="Hiring">
                 </div>
             </div>
 
@@ -251,11 +258,15 @@
 
     <!-- FOOTER -->
     <footer class="bg-slate-950 pt-20 pb-10 border-t border-slate-900">
-        <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 gap-12 mb-16">
+        <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 gap-12 mb-16 text-center md:text-left">
             <div class="lg:col-span-2">
-                <img src="Avyukta Logo New - 3.png" class="h-10 mb-6 opacity-90" alt="Logo">
-                <p class="text-slate-500 text-xs leading-relaxed italic pr-10">The global authority for 3 O's optimized communications. Unified architecture for the AI-first enterprise.</p>
-                <div class="flex gap-4 mt-8">
+                <img src="Avyukta%20Logo%20New%20-%203.png" onerror="this.style.display='none'" class="h-10 mb-6 opacity-90 mx-auto md:mx-0" alt="Logo">
+                <p class="text-slate-500 text-xs leading-relaxed italic mb-4">Architecture built for the AI-first enterprise.</p>
+                <div class="bg-black/20 p-4 rounded-xl border border-white/5 inline-block">
+                    <h5 class="text-[9px] font-bold uppercase tracking-widest text-blue-400 mb-4 text-center">The Board</h5>
+                    <img src="CoreTeam.jpg" onerror="this.src='https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400'" class="h-16 w-auto rounded-lg grayscale opacity-70" alt="Board">
+                </div>
+                <div class="flex gap-4 mt-8 justify-center md:justify-start">
                     <a href="https://in.linkedin.com/company/avyukta-intellicall" target="_blank" class="footer-link">LinkedIn</a>
                     <a href="https://www.facebook.com/avyukta.intellicall/" target="_blank" class="footer-link">Facebook</a>
                 </div>
@@ -271,7 +282,7 @@
             </div>
             <div>
                 <h5 class="text-[10px] font-bold mb-4 text-white uppercase tracking-widest">Corporate Resources</h5>
-                <ul class="space-y-2 flex flex-col">
+                <ul class="space-y-2 flex flex-col text-[12px]">
                     <li><a href="https://www.avyukta.in/brochure/" class="footer-link">Brochure</a></li>
                     <li><a href="https://www.avyukta.in/features" class="footer-link">Features</a></li>
                     <li><a href="https://www.avyukta.in/dubai/" class="footer-link">Dubai</a></li>
@@ -285,30 +296,29 @@
                 <ul class="space-y-2 flex flex-col">
                     <li><a href="https://hire.clouddialer.in/" target="_blank" class="footer-link font-bold text-blue-400">AI Hiring Platform</a></li>
                     <li><a href="https://avyukta.in/portal" class="footer-link">Portal Login</a></li>
-                    <li><a href="https://wa.me/918560000600" class="footer-link">Help Desk</a></li>
+                    <li><a href="https://avyukta.in/matrix" class="footer-link">Matrix Support Hub</a></li>
                 </ul>
             </div>
         </div>
         <div class="container mx-auto px-6 text-center text-slate-800 text-[10px] uppercase tracking-widest pt-8 border-t border-white/5">
-            © 2026 Avyukta Intelli-SaaS. International VoIP, Predictive Dialer, GSM Gateway.
+            © 2026 Avyukta Intelli-SaaS. All assets locally hosted in Avyuktaooo folder.
         </div>
     </footer>
 
     <script>
         window.addEventListener('DOMContentLoaded', () => {
-            // THEME ENGINE
+            // Theme Engine
             window.toggleTheme = () => {
                 document.body.classList.toggle('light');
-                const isLight = document.body.classList.contains('light');
             };
 
-            // LOADER
+            // Loader (Fast Boot)
             setTimeout(() => {
                 const p = document.getElementById('preloader');
                 if(p) { p.style.opacity = '0'; setTimeout(() => p.style.visibility = 'hidden', 600); }
             }, 1500);
 
-            // CURSOR & PARALLAX
+            // Cursor & Parallax
             const cursor = document.getElementById('custom-cursor');
             const follower = document.getElementById('cursor-follower');
             let cx = 0, cy = 0, fx = 0, fy = 0;
@@ -326,30 +336,32 @@
             document.addEventListener('mouseover', e => { if (e.target.closest('a, button, .product-card')) document.body.classList.add('cursor-hover'); });
             document.addEventListener('mouseout', e => { if (e.target.closest('a, button, .product-card')) document.body.classList.remove('cursor-hover'); });
 
-            // ECOSYSTEM DATA (4x4)
+            // ECOSYSTEM GRID
             const productGrid = document.getElementById('product-grid');
             const items = [
-                { n: 'Predictive Dialer', i: 'AiBot.jpg', l: 'https://avyukta.in/portal' },
-                { n: 'AI Voice Caller', i: 'AI_image.jpg', l: 'https://www.avyukta.in/ai/' },
-                { n: 'AI Hire (HRMS)', i: 'CoreTeam.jpg', l: 'https://hire.clouddialer.in/' },
-                { n: 'Custom Software', i: 'Convergence.jpg', l: 'https://avyukta.in/portal' },
-                { n: 'CRM / URM', i: 'AiCosting.jpg', l: 'https://www.avyukta.in/crm/' },
-                { n: 'Omni Channels', i: 'OmniChannel.jpg', l: 'https://avyukta.in/portal' },
-                { n: 'WhatsApp API', i: 'Avyukta Omni Image - 1.jpg', l: 'https://avyukta.in/portal' },
-                { n: 'Mobile App', i: 'AgentAndroidApp.jpg', l: 'https://avyukta.in/portal' },
-                { n: 'International Auto Dialing', i: 'AI_image.jpg', l: 'https://avyukta.in/portal' },
-                { n: 'International Manual', i: 'SinglePointFlyer.jpg', l: 'https://www.avyukta.in/unlimitedvoip/' },
+                { n: 'Predictive Dialer', i: 'Predictive_Dialer.png', l: 'https://avyukta.in/portal' },
+                { n: 'AI Voice Caller', i: 'Avyukta_AI_Caller.png', l: 'https://www.avyukta.in/ai/' },
+                { n: 'AI Hire (HRMS)', i: 'AIHire.png', l: 'https://hire.clouddialer.in/' },
+                { n: 'Custom Software', i: 'CustomSoftware.png', l: 'https://avyukta.in/portal' },
+                { n: 'CRM / URM', i: 'CRMURM.jpg', l: 'https://www.avyukta.in/crm/' },
+                { n: 'Omni Channels', i: 'AvyuktaOmniChannels.png', l: 'https://avyukta.in/portal' },
+                { n: 'WhatsApp API', i: 'Avyukta%20WABA%20%20Avyukta%20Meta.png', l: 'https://avyukta.in/portal' },
+                { n: 'Dialer App', i: 'AvyuktaMobileApp.png', l: 'https://avyukta.in/portal' },
+                { n: 'International Auto Dialing', i: 'International_Auto_Dialing.png', l: 'https://avyukta.in/portal' },
+                { n: 'International Manual', i: 'AvyuktaMobileApp.png', l: 'https://www.avyukta.in/unlimitedvoip/' },
                 { n: 'International Incoming', i: 'Partners.jpg', l: 'https://avyukta.in/portal' },
-                { n: 'Domestic Calling', i: 'TeamAvyukta.png', l: 'https://www.avyukta.in/domestic/' },
-                { n: 'SIP Trunking', i: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc4b?w=600', l: 'https://avyukta.in/portal' },
+                { n: 'Domestic Calling', i: 'DomesticCalling.png', l: 'https://www.avyukta.in/domestic/' },
+                { n: 'SIP Trunking', i: 'SIPTrunking.png', l: 'https://avyukta.in/portal' },
                 { n: 'CTI Hardware', i: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=600', l: 'https://avyukta.in/portal' },
                 { n: 'GSM Gateway', i: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=600', l: 'https://avyukta.in/portal' },
                 { n: 'VoIP Minutes', i: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600', l: 'https://www.avyukta.in/international/' }
             ];
             if(productGrid) {
                 productGrid.innerHTML = items.map(item => `
-                    <a href="${item.l}" target="${item.l.includes('avyukta.in') && !item.l.includes('portal') ? '_blank' : '_self'}" class="product-card block relative overflow-hidden rounded-2xl aspect-square group shadow-2xl">
-                        <img src="${item.i}" alt="${item.n}" class="absolute inset-0 w-full h-full object-cover">
+                    <a href="${item.l}" target="${item.l.includes('avyukta.in') && !item.l.includes('portal') ? '_blank' : '_self'}" class="product-card block relative aspect-square group shadow-2xl">
+                        <img src="${item.i}" 
+                             onerror="this.src='https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=600'" 
+                             alt="${item.n}" class="absolute inset-0 w-full h-full object-cover">
                         <div class="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent"></div>
                         <div class="absolute bottom-0 left-0 p-3 w-full text-center">
                             <h3 class="text-[9px] font-bold text-white group-hover:text-blue-400 transition-colors uppercase tracking-widest leading-tight">${item.n}</h3>
@@ -362,8 +374,9 @@
             const nav = ["Home", "Services", "Architectures", "Trust", "Career", "Contact"];
             const navContainer = document.getElementById('nav-links');
             if(navContainer) {
-                navContainer.innerHTML = [...nav, ...nav].map(i => 
-                    `<a href="#${i.toLowerCase()}" class="inline-block mx-16 transition-colors hover:text-blue-400">${i}</a>`
+                const navItemsWithDupes = [...nav, ...nav];
+                navContainer.innerHTML = navItemsWithDupes.map(i => 
+                    `<a href="#${i.toLowerCase()}" class="inline-block transition-colors hover:text-blue-400">${i}</a>`
                 ).join('');
             }
 
