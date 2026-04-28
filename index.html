@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#020617">
     
+    <!-- FAVICON -->
+    <link rel="icon" type="image/gif" href="icons8-favicon.gif">
+    
     <title>Avyukta Intelli-SaaS | AI-Driven Global VoIP & Dialer Solutions</title>
     <meta name="description" content="Leading VoIP vendor and dialer provider. Offering International VoIP, Tata/Airtel/Jio SIP, and Predictive Dialers.">
     
@@ -17,7 +20,6 @@
         :root { 
             --brand-blue: #60a5fa; 
             --brand-purple: #a78bfa; 
-            --brand-ai: #818cf8;
             --bg: #020617;
             --text: #f1f5f9;
             --surface: #0f172a;
@@ -62,17 +64,17 @@
         .text-outline { -webkit-text-stroke: 1px var(--border); color: transparent; transition: 0.6s; }
         .text-outline:hover { -webkit-text-stroke: 1px var(--brand-blue); color: var(--text); filter: drop-shadow(0 0 15px var(--brand-blue)); }
 
-        .marquee-container { background: var(--bg); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); padding: 1rem 0; z-index: 100; opacity: 0.95; overflow: hidden; display: flex; width: 100%; }
+        /* MARQUEE ENGINE FIX */
+        .marquee-container { background: var(--bg); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); padding: 1rem 0; z-index: 100; opacity: 0.95; overflow: hidden; white-space: nowrap; width: 100%; display: block; }
         .marquee-content { 
-            display: flex; 
-            animation: marquee 40s linear infinite; 
-            white-space: nowrap; 
+            display: inline-block; 
+            animation: marquee-scroll 45s linear infinite; 
             font-family: 'Tangerine', cursive; 
             font-weight: 700;
-            width: fit-content;
         }
-        .marquee-content a { font-size: 2.2rem; padding: 0 4rem; text-decoration: none; color: var(--text); }
-        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .marquee-content a { font-size: 2.2rem; padding: 0 4rem; text-decoration: none; color: var(--text); transition: color 0.3s; display: inline-block; }
+        .marquee-content a:hover { color: var(--brand-blue); }
+        @keyframes marquee-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
         .product-card { position: relative; transition: 0.6s cubic-bezier(0.165, 0.84, 0.44, 1); background: var(--surface); border: 1px solid var(--border); overflow: hidden; border-radius: 1.5rem; }
         .product-card::after { content: ""; position: absolute; top: 0; left: -150%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent); transform: skewX(-20deg); transition: 0.8s; }
@@ -171,7 +173,7 @@
         <div class="grid lg:grid-cols-2 items-center gap-16">
             <div class="rounded-3xl border border-white/5 overflow-hidden bg-black/40 p-2 group shadow-2xl">
                 <img src="Avyukta%20CRM%20Software.png" 
-                     onerror="this.src='https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800'"
+                     onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800';"
                      class="w-full h-auto rounded-2xl group-hover:scale-105 transition-transform duration-1000" alt="CRM Logic">
             </div>
             <div class="space-y-8">
@@ -215,16 +217,22 @@
         <div class="text-center mb-16">
             <h2 class="text-3xl font-bold mb-12 uppercase tracking-[0.4em] text-blue-400">Global Trust & Ecosystem</h2>
             <div class="flex flex-wrap gap-12 items-center justify-center mb-24 grayscale opacity-60 contrast-125">
-                <img src="Zoho.png" onerror="this.style.display='none'" class="partner-logo" alt="Zoho">
-                <img src="genesys.png" onerror="this.style.display='none'" class="partner-logo" alt="Genesys">
-                <img src="Bitrix24.png" onerror="this.style.display='none'" class="partner-logo" alt="Bitrix24">
-                <img src="Avaya.png" onerror="this.style.display='none'" class="partner-logo" alt="Avaya">
+                <img src="Zoho.png" onerror="this.onerror=null; this.style.display='none';" class="partner-logo" alt="Zoho">
+                <img src="genesys.png" onerror="this.onerror=null; this.style.display='none';" class="partner-logo" alt="Genesys">
+                <img src="Bitrix24.png" onerror="this.onerror=null; this.style.display='none';" class="partner-logo" alt="Bitrix24">
+                <img src="Avaya.png" onerror="this.onerror=null; this.style.display='none';" class="partner-logo" alt="Avaya">
             </div>
             
-            <div class="rounded-3xl border border-white/5 p-4 mb-8 bg-black/10"><img src="Partners.jpg" onerror="this.src='https://images.unsplash.com/photo-1551434678-e076c223a692?w=1200'" class="w-full h-auto rounded-xl opacity-90" alt="Partners"></div>
+            <div class="rounded-3xl border border-white/5 p-4 mb-8 bg-black/10">
+                <img src="Partners.jpg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1551434678-e076c223a692?w=1200';" class="w-full h-auto rounded-xl opacity-90" alt="Partners">
+            </div>
             <div class="grid lg:grid-cols-2 gap-8">
-                <div class="rounded-3xl border border-white/5 p-4 bg-black/10"><img src="Clients.jpg" onerror="this.src='https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800'" class="w-full h-auto rounded-xl opacity-90" alt="Clients"></div>
-                <div class="rounded-3xl border border-white/5 p-4 bg-black/10"><img src="Convergence.jpg" onerror="this.src='https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800'" class="w-full h-auto rounded-xl opacity-90 object-cover aspect-video" alt="Convergence"></div>
+                <div class="rounded-3xl border border-white/5 p-4 bg-black/10">
+                    <img src="Clients.jpg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800';" class="w-full h-auto rounded-xl opacity-90" alt="Clients">
+                </div>
+                <div class="rounded-3xl border border-white/5 p-4 bg-black/10">
+                    <img src="Convergence.jpg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800';" class="w-full h-auto rounded-xl opacity-90 object-cover aspect-video" alt="Convergence">
+                </div>
             </div>
         </div>
     </section>
@@ -242,12 +250,12 @@
                     </div>
                 </div>
                 <div class="relative hidden lg:block overflow-hidden h-full">
-                    <img src="We%20are%20Hiring.png" onerror="this.src='https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800'" class="absolute inset-0 w-full h-full object-cover opacity-90" alt="Hiring">
+                    <!-- Hiring Visual -->
+                    <img src="We%20are%20Hiring.png" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800';" class="absolute inset-0 w-full h-full object-cover opacity-90" alt="Hiring">
                 </div>
             </div>
 
             <div id="apply-interface" class="p-8 md:p-16 border-t border-white/5 hidden bg-black/20">
-                <div class="mb-10 h-1 bg-white/5 rounded-full overflow-hidden"><div id="form-progress" class="progress-fill w-[11%]"></div></div>
                 <form onsubmit="window.location.href='https://avyukta.in/portal'; return false;" class="space-y-6">
                     <div class="grid md:grid-cols-2 gap-4"><input type="text" placeholder="Full Name" class="form-input" required><input type="email" placeholder="Work Email" class="form-input" required></div>
                     <button class="w-full py-4 bg-blue-600 rounded-xl font-bold uppercase tracking-widest text-xs">Initiate Secure Application &rarr;</button>
@@ -260,11 +268,11 @@
     <footer class="bg-slate-950 pt-20 pb-10 border-t border-slate-900">
         <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 gap-12 mb-16 text-center md:text-left">
             <div class="lg:col-span-2">
-                <img src="Avyukta%20Logo%20New%20-%203.png" onerror="this.style.display='none'" class="h-10 mb-6 opacity-90 mx-auto md:mx-0" alt="Logo">
+                <img src="Avyukta%20Logo%20New%20-%203.png" onerror="this.onerror=null; this.style.display='none';" class="h-10 mb-6 opacity-90 mx-auto md:mx-0" alt="Logo">
                 <p class="text-slate-500 text-xs leading-relaxed italic mb-4">Architecture built for the AI-first enterprise.</p>
                 <div class="bg-black/20 p-4 rounded-xl border border-white/5 inline-block">
                     <h5 class="text-[9px] font-bold uppercase tracking-widest text-blue-400 mb-4 text-center">The Board</h5>
-                    <img src="CoreTeam.jpg" onerror="this.src='https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400'" class="h-16 w-auto rounded-lg grayscale opacity-70" alt="Board">
+                    <img src="CoreTeam.jpg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400';" class="h-16 w-auto rounded-lg grayscale opacity-70" alt="Board">
                 </div>
                 <div class="flex gap-4 mt-8 justify-center md:justify-start">
                     <a href="https://in.linkedin.com/company/avyukta-intellicall" target="_blank" class="footer-link">LinkedIn</a>
@@ -312,7 +320,7 @@
                 document.body.classList.toggle('light');
             };
 
-            // Loader (Fast Boot)
+            // Loader
             setTimeout(() => {
                 const p = document.getElementById('preloader');
                 if(p) { p.style.opacity = '0'; setTimeout(() => p.style.visibility = 'hidden', 600); }
@@ -345,22 +353,23 @@
                 { n: 'Custom Software', i: 'CustomSoftware.png', l: 'https://avyukta.in/portal' },
                 { n: 'CRM / URM', i: 'CRMURM.jpg', l: 'https://www.avyukta.in/crm/' },
                 { n: 'Omni Channels', i: 'AvyuktaOmniChannels.png', l: 'https://avyukta.in/portal' },
-                { n: 'WhatsApp API', i: 'Avyukta%20WABA%20%20Avyukta%20Meta.png', l: 'https://avyukta.in/portal' },
-                { n: 'Dialer App', i: 'AvyuktaMobileApp.png', l: 'https://avyukta.in/portal' },
+                { n: 'WhatsApp API', i: 'Avyukta WABA Avyukta Meta.png', l: 'https://avyukta.in/portal' },
+                { n: 'Dialer App', i: 'AvyuktaMobileApp.jpg', l: 'https://avyukta.in/portal' },
                 { n: 'International Auto Dialing', i: 'International_Auto_Dialing.png', l: 'https://avyukta.in/portal' },
-                { n: 'International Manual', i: 'AvyuktaMobileApp.png', l: 'https://www.avyukta.in/unlimitedvoip/' },
-                { n: 'International Incoming', i: 'Partners.jpg', l: 'https://avyukta.in/portal' },
+                { n: 'International Manual', i: 'International_Manual_Dialer.png', l: 'https://www.dialerindia.com/internationaldialer.php' },
+                { n: 'International Incoming', i: 'International_Incoming.png', l: 'https://avyukta.in/portal' },
                 { n: 'Domestic Calling', i: 'DomesticCalling.png', l: 'https://www.avyukta.in/domestic/' },
                 { n: 'SIP Trunking', i: 'SIPTrunking.png', l: 'https://avyukta.in/portal' },
                 { n: 'CTI Hardware', i: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=600', l: 'https://avyukta.in/portal' },
                 { n: 'GSM Gateway', i: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=600', l: 'https://avyukta.in/portal' },
                 { n: 'VoIP Minutes', i: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600', l: 'https://www.avyukta.in/international/' }
             ];
+            
             if(productGrid) {
                 productGrid.innerHTML = items.map(item => `
                     <a href="${item.l}" target="${item.l.includes('avyukta.in') && !item.l.includes('portal') ? '_blank' : '_self'}" class="product-card block relative aspect-square group shadow-2xl">
-                        <img src="${item.i}" 
-                             onerror="this.src='https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=600'" 
+                        <img src="${encodeURI(item.i)}" 
+                             onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=600';" 
                              alt="${item.n}" class="absolute inset-0 w-full h-full object-cover">
                         <div class="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent"></div>
                         <div class="absolute bottom-0 left-0 p-3 w-full text-center">
@@ -370,12 +379,12 @@
                 `).join('');
             }
 
-            // NAV
+            // NAV INJECTION
             const nav = ["Home", "Services", "Architectures", "Trust", "Career", "Contact"];
             const navContainer = document.getElementById('nav-links');
             if(navContainer) {
-                const navItemsWithDupes = [...nav, ...nav];
-                navContainer.innerHTML = navItemsWithDupes.map(i => 
+                const loopNav = [...nav, ...nav];
+                navContainer.innerHTML = loopNav.map(i => 
                     `<a href="#${i.toLowerCase()}" class="inline-block transition-colors hover:text-blue-400">${i}</a>`
                 ).join('');
             }
