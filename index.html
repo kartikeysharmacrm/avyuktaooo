@@ -64,15 +64,15 @@
         .text-outline { -webkit-text-stroke: 1px var(--border); color: transparent; transition: 0.6s; }
         .text-outline:hover { -webkit-text-stroke: 1px var(--brand-blue); color: var(--text); filter: drop-shadow(0 0 15px var(--brand-blue)); }
 
-        /* MARQUEE ENGINE FIX */
-        .marquee-container { background: var(--bg); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); padding: 1rem 0; z-index: 100; opacity: 0.95; overflow: hidden; white-space: nowrap; width: 100%; display: block; }
+        /* MARQUEE ENGINE FIX - BULLETPROOF SCROLLING */
+        .marquee-container { background: var(--bg); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); padding: 1rem 0; z-index: 100; opacity: 0.95; overflow: hidden; white-space: nowrap; width: 100%; display: flex; }
         .marquee-content { 
-            display: inline-block; 
+            display: inline-flex; 
             animation: marquee-scroll 45s linear infinite; 
             font-family: 'Tangerine', cursive; 
             font-weight: 700;
         }
-        .marquee-content a { font-size: 2.2rem; padding: 0 4rem; text-decoration: none; color: var(--text); transition: color 0.3s; display: inline-block; }
+        .marquee-content a { font-size: 2.2rem; padding: 0 4rem; text-decoration: none; color: var(--text); transition: color 0.3s; }
         .marquee-content a:hover { color: var(--brand-blue); }
         @keyframes marquee-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
@@ -143,8 +143,8 @@
         <div class="marquee-content" id="nav-links"></div>
     </nav>
 
-    <!-- HEADING -->
-    <section class="container mx-auto px-6 py-20 md:py-32 text-center reveal">
+    <!-- HEADING / HOME ANCHOR -->
+    <section id="home" class="container mx-auto px-6 py-20 md:py-32 text-center reveal">
         <h2 class="ooo-heading leading-none mb-6">
             Welcome to the <span class="gradient-text">3 O’s</span>:<br>
             <span class="text-outline">Omni</span>. 
@@ -264,8 +264,8 @@
         </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer class="bg-slate-950 pt-20 pb-10 border-t border-slate-900">
+    <!-- FOOTER / CONTACT ANCHOR -->
+    <footer id="contact" class="bg-slate-950 pt-20 pb-10 border-t border-slate-900">
         <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 gap-12 mb-16 text-center md:text-left">
             <div class="lg:col-span-2">
                 <img src="Avyukta%20Logo%20New%20-%203.png" onerror="this.onerror=null; this.style.display='none';" class="h-10 mb-6 opacity-90 mx-auto md:mx-0" alt="Logo">
@@ -289,7 +289,7 @@
                 </ul>
             </div>
             <div>
-                <h5 class="text-[10px] font-bold mb-4 text-white uppercase tracking-widest">Corporate Resources</h5>
+                <h5 class="text-[10px] font-bold mb-4 text-white uppercase tracking-widest text-center md:text-left">Corporate Resources</h5>
                 <ul class="space-y-2 flex flex-col text-[12px]">
                     <li><a href="https://www.avyukta.in/brochure/" class="footer-link">Brochure</a></li>
                     <li><a href="https://www.avyukta.in/features" class="footer-link">Features</a></li>
@@ -356,7 +356,7 @@
                 { n: 'WhatsApp API', i: 'Avyukta WABA Avyukta Meta.png', l: 'https://avyukta.in/portal' },
                 { n: 'Dialer App', i: 'AvyuktaMobileApp.jpg', l: 'https://avyukta.in/portal' },
                 { n: 'International Auto Dialing', i: 'International_Auto_Dialing.png', l: 'https://avyukta.in/portal' },
-                { n: 'International Manual', i: 'International_Manual_Dialer.png', l: 'https://www.dialerindia.com/internationaldialer.php' },
+                { n: 'International Manual', i: 'International_Manual_Dialer.png', l: 'https://www.avyukta.in/unlimitedvoip/' },
                 { n: 'International Incoming', i: 'International_Incoming.png', l: 'https://avyukta.in/portal' },
                 { n: 'Domestic Calling', i: 'DomesticCalling.png', l: 'https://www.avyukta.in/domestic/' },
                 { n: 'SIP Trunking', i: 'SIPTrunking.png', l: 'https://avyukta.in/portal' },
@@ -383,7 +383,7 @@
             const nav = ["Home", "Services", "Architectures", "Trust", "Career", "Contact"];
             const navContainer = document.getElementById('nav-links');
             if(navContainer) {
-                const loopNav = [...nav, ...nav];
+                const loopNav = [...nav, ...nav]; // Doubling for seamless scroll logic
                 navContainer.innerHTML = loopNav.map(i => 
                     `<a href="#${i.toLowerCase()}" class="inline-block transition-colors hover:text-blue-400">${i}</a>`
                 ).join('');
